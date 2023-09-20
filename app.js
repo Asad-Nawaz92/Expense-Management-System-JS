@@ -31,7 +31,7 @@ function signup() {
   var usersJSON = localStorage.getItem("users");
   var users = usersJSON ? JSON.parse(usersJSON) : [];
 
-  var existingUser = users.find(function (user) {
+  var existingUser = users.some(function (user) {
     return user.email === email;
   });
 
@@ -60,7 +60,7 @@ function signin() {
   var usersJSON = localStorage.getItem("users");
   var users = usersJSON ? JSON.parse(usersJSON) : [];
 
-  var user = users.some(function (e) {
+  var user = users.find(function (e) {
     return e.email === email && e.password === password;
   });
 
