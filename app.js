@@ -31,7 +31,7 @@ function signup() {
   var usersJSON = localStorage.getItem("users");
   var users = usersJSON ? JSON.parse(usersJSON) : [];
 
-  var existingUser = users.some(function (user) {
+  var existingUser = users.find(function (user) {
     return user.email === email;
   });
 
@@ -60,7 +60,7 @@ function signin() {
   var usersJSON = localStorage.getItem("users");
   var users = usersJSON ? JSON.parse(usersJSON) : [];
 
-  var user = users.find(function (e) {
+  var user = users.some(function (e) {
     return e.email === email && e.password === password;
   });
 
@@ -70,6 +70,10 @@ function signin() {
     alert("Invalid email or password. Please try again.");
     location.href = "./signin.html";
   }
+}
+
+function logOut() {
+  location.href = "./signin.html";
 }
 
 //Expense Management System
@@ -92,6 +96,9 @@ function addExpense() {
   }
 
   var newRow = document.createElement("tr");
+
+  var idCell = document.createElement("td");
+  idCell.textContent = expenseList.rows.length + 1;
 
   var titleCell = document.createElement("td");
   titleCell.textContent = title;
@@ -116,6 +123,7 @@ function addExpense() {
   actionCell.appendChild(deleteButton);
   deleteButton.setAttribute("class", "btn btn-danger m-2");
 
+  newRow.appendChild(idCell);
   newRow.appendChild(titleCell);
   newRow.appendChild(amountCell);
   newRow.appendChild(dateCell);
@@ -132,9 +140,9 @@ function addExpense() {
 }
 function updateExpense(button) {
   var row = button.parentNode.parentNode;
-  var titleCell = row.cells[0];
-  var amountCell = row.cells[1];
-  var dateCell = row.cells[2];
+  var titleCell = row.cells[1];
+  var amountCell = row.cells[2];
+  var dateCell = row.cells[3];
 
   var updatedTitle = prompt("Enter Updated Title", titleCell.textContent);
   var updatedAmount = parseFloat(
@@ -154,11 +162,15 @@ function updateExpense(button) {
 
 function deleteExpense(button) {
   var row = button.parentNode.parentNode;
-  row.parentNode.removeChild(row);
+  var rowIndex = row.rowIndex;
+  expenseList.deleteRow(rowIndex);
 
-  var amountCell = row.cells[1];
-  var deletedAmount = parseFloat(amountCell.textContent);
-  totalAmount -= deletedAmount;
+  var rows = expenseList.rows;
+  for (var i = rowIndex; i < rows.length; i++) {
+    rows[i].cells[0].textContent = i + 1;
+  }
+
+  totalAmount -= parseFloat(row.cells[2].textContent);
   displayTotalAmount();
 }
 

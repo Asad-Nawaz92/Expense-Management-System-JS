@@ -9,6 +9,17 @@
 </head>
 
 <body>
+    <!----- Navbar ------>
+    <div>
+        <nav class="navbar bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light">EMS</a>
+                <button class="d-flex btn btn-warning" onclick="logOut()">Log Out</button>
+            </div>
+        </nav>
+    </div>
+
+    <!----- Main ------>
     <div class="container">
         <h1 class="text-center my-4">Expense Management System</h1>
         <div class="row justify-content-center mb-4">
@@ -31,6 +42,7 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Title</th>
                     <th>Amount</th>
                     <th>Date</th>
@@ -41,6 +53,19 @@
             <tbody id="expense-list"></tbody>
         </table>
     </div>
+
+    <!----- Footer ------>
+    <div>
+        <footer>
+            <div class="d-flex justify-content-center bg-dark">
+                <p class="text-light">
+                    Developed by <a class="text-warning" style="text-decoration: none;" target="_blank" href="https://github.com/Asad-Nawaz92">Asad Nawaz</a>
+                    | All Rights Reserved. &copy; 2023
+                </p>
+            </div>
+        </footer>
+    </div>
+
 
     <script src="app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
