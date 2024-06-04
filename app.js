@@ -77,6 +77,7 @@ function logOut() {
 }
 
 //Expense Management System
+
 var expenses = [];
 var expenseList = document.getElementById("expense-list");
 var totalAmount = 0;
@@ -118,9 +119,9 @@ function addExpense() {
   updateButton.setAttribute("class", "btn btn-info m-2");
 
   var deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
-  deleteButton.setAttribute("onclick", "deleteExpense(this)");
   actionCell.appendChild(deleteButton);
+  deleteButton.textContent = "Delete";
+  deleteButton.setAttribute("onclick", "deleteExpense(this.parentNode)");
   deleteButton.setAttribute("class", "btn btn-danger m-2");
 
   newRow.appendChild(idCell);
