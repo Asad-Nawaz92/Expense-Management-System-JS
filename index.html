@@ -1,40 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asad - Expense Management System</title>
+    <title>Register - Expense Management System</title>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account!</p>
-    <form>
-        <label for="signup-name">Name:</label>
-        <input type="text" id="signup-name" required>
-        <br>
-        <label for="signup-email">Email:</label>
-        <input type="email" id="signup-email" required>
-        <br>
-        <label for="signup-pass">Password:</label>
-        <input type="password" id="signup-pass" required>
-        <br>
-        <label for="signup-confirm-pass">Confirm Password:</label>
-        <input type="password" id="signup-confirm-pass" required>
-        <br>
-        <span><label class="form-check-label" for="invalidCheck2">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                Agree to terms and conditions
-            </label>
-        </span>
-        <br>
-        <button type="button" onclick="signup()">Sign Up</button>
-    </form>
+    <div class="container">
+        <form>
+            <h2>Register</h2>
+            <div class="input-field">
+                <input type="text" id="signup-name" required>
+                <label for="signup-name">Username</label>
+            </div>
+
+            <div class="input-field">
+                <input type="email" id="signup-email" required>
+                <label for="signup-email">Email</label>
+            </div>
+
+            <div class="input-field">
+                <input type="password" id="signup-pass" required>
+                <label for="signup-pass">Password</label>
+            </div>
+
+            <div class="input-field">
+                <input type="password" id="signup-confirm-pass" required>
+                <label for="signup-confirm-pass">Confirm Password</label>
+            </div>
+
+            <div class="forget">
+                <label for="agree"><input type="checkbox" id="agree">
+                    <p>Agree to terms and conditions</p>
+                </label>
+            </div>
+
+            <button type="button" onclick="signup()">Register</button>
+            <div class="register">
+                <p>Already have an account? <a href="./signin.html">Login</a></p>
+            </div>
     </div>
-    <p>Already have an account? <a href="./signin.html">Sign In</a></p>
+
     <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

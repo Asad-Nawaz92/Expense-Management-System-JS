@@ -1,79 +1,74 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyDa1y03PJzImKtToZ7U37cu2O1nkQIC7Vo",
+  authDomain: "signup-auth-474ba.firebaseapp.com",
+  projectId: "signup-auth-474ba",
+  storageBucket: "signup-auth-474ba.appspot.com",
+  messagingSenderId: "132636142418",
+  appId: "1:132636142418:web:91edf99f16e2e048d4a88b",
+};
+
+// Initialize Firebase
+const fireBase = firebase.initializeApp(firebaseConfig);
+
+// SignUp/SignIn Form
 function signup() {
-  var nameInput = document.createElement("signup-name");
-  var emailInput = document.getElementById("signup-email");
-  var passwordInput = document.getElementById("signup-pass");
-  var confirmpasswordInput = document.getElementById("signup-confirm-pass");
+  const emailInput = document.getElementById("signup-email");
+  const passwordInput = document.getElementById("signup-pass");
 
-  var name = nameInput.value;
-  var email = emailInput.value;
-  var password = passwordInput.value;
-  var confirmPassword = confirmpasswordInput.value;
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
-  if (password != confirmPassword) {
-    alert("Passwords do not match.");
-    return;
-  }
-
-  if (
-    name === "" ||
-    confirmPassword === "" ||
-    email === "" ||
-    password === ""
-  ) {
-    alert("Please fill in all fields.");
-    return;
-  }
-
-  if (password.length < 6) {
-    alert("Password must be at least 6 characters long.");
-    return;
-  }
-  var usersJSON = localStorage.getItem("users");
-  var users = usersJSON ? JSON.parse(usersJSON) : [];
-
-  var existingUser = users.some(function (user) {
-    return user.email === email;
-  });
-
-  if (existingUser) {
-    alert("User with this email already exists. Please sign in.");
-    location.href = "./signin.html";
-    return;
-  }
-
-  var newUser = {
-    email: email,
-    password: password,
-  };
-
-  users.push(newUser);
-  localStorage.setItem("users", JSON.stringify(users));
-  location.href = "./signin.html";
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "User account created successfully.",
+      }).then(() => {
+        window.location.href = "./signin.html";
+      });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    });
 }
 
 function signin() {
-  var emailInput = document.getElementById("signin-email");
-  var passwordInput = document.getElementById("signin-pass");
-  var email = emailInput.value;
-  var password = passwordInput.value;
+  const emailInput = document.getElementById("signin-email");
+  const passwordInput = document.getElementById("signin-pass");
 
-  var usersJSON = localStorage.getItem("users");
-  var users = usersJSON ? JSON.parse(usersJSON) : [];
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
-  var user = users.find(function (e) {
-    return e.email === email && e.password === password;
-  });
-
-  if (user) {
-    location.href = "./welcome.html";
-  } else {
-    alert("Invalid email or password. Please try again.");
-    location.href = "./signin.html";
-  }
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      window.location.href = "./welcome.html";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    });
 }
 
 function logOut() {
-  location.href = "./signin.html";
+  window.location.href = "./signin.html";
 }
 
 //Expense Management System
