@@ -1,10 +1,10 @@
 /* EMS */
-body{
-    background-color: #ccc;
+body {
+  background-color: #ccc;
 }
 
-.navbar{
-    background-color:#3C3C3B;
+.navbar {
+  background-color: #3c3c3b;
 }
 
 .footer {
@@ -23,57 +23,54 @@ body{
   padding-top: 20px !important;
 }
 
-
-.total_amount{
-    font-size: 20px !important;
-    position: absolute;
-    right: 10%;
-    top: 44%;
+.total_amount {
+  font-size: 20px !important;
+  position: absolute;
+  right: 10%;
+  top: 44%;
 }
 
 /* For small devices (up to 576px) */
 @media (max-width: 576px) {
-    .content-wrapper {
-        padding: 10px !important;
-    }
-    .content-wrapper h1{
-        font-size: 1.5rem !important;
-    }
-    .total_amount{
-        font-size: 17px !important;
-        margin-top: 10px;
-        margin-right: 47px;
-    }
-    .table{
-        margin-top: 10px;
-    }
-    .btn{
-        font-size: 14px;
-    }
-    .footer{
-        font-size: 0.9rem !important;
-        height: 42px !important;
-    }
+  .content-wrapper {
+    padding: 10px !important;
+  }
+  .content-wrapper h1 {
+    font-size: 1.5rem !important;
+  }
+  .total_amount {
+    font-size: 17px !important;
+    margin-top: 10px;
+    margin-right: 47px;
+  }
+  .table {
+    margin-top: 10px;
+  }
+  .btn {
+    font-size: 14px;
+  }
+  .footer {
+    font-size: 0.9rem !important;
+    height: 42px !important;
+  }
 }
-
 
 /* For medium devices (between 576px and 768px) */
 @media (min-width: 577px) and (max-width: 768px) {
-    .content-wrapper {
-        padding: 20px !important;
-    }
-    .content-wrapper h1{
-        font-size: 1.7rem !important;
-    }
+  .content-wrapper {
+    padding: 20px !important;
+  }
+  .content-wrapper h1 {
+    font-size: 1.7rem !important;
+  }
 }
 
 /* For large devices (above 768px) */
 @media (min-width: 769px) {
-    .content-wrapper {
-        padding: 40px !important;
-    }
-    .content-wrapper h1{
-        font-size: 1.9rem !important;
-    }
-    
+  .content-wrapper {
+    padding: 40px !important;
+  }
+  .content-wrapper h1 {
+    font-size: 1.9rem !important;
+  }
 }

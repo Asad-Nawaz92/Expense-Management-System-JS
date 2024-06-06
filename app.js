@@ -164,13 +164,12 @@ function addExpense() {
       );
       deleteButton.setAttribute("class", "btn btn-danger m-2");
       actionCell.appendChild(deleteButton);
-      
+
       newRow.appendChild(idCell);
       newRow.appendChild(titleCell);
       newRow.appendChild(amountCell);
       newRow.appendChild(dateCell);
       newRow.appendChild(actionCell);
-
 
       expenseList.appendChild(newRow);
       // Clear input fields
@@ -300,7 +299,7 @@ function displayTotalAmount() {
   if (totalAmountElement) {
     totalAmountElement.textContent =
       "Total Amount : " + totalAmount.toFixed(2) + " PKR";
-      totalAmountElement.setAttribute("class", "total_amount");
+    totalAmountElement.setAttribute("class", "total_amount");
   }
 }
 
