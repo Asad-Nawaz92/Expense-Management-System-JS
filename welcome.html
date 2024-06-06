@@ -5,23 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asad - Expense Management System</title>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./assets/images/icon_img.jpeg">
 </head>
 
-<body>
+<body class="d-flex flex-column">
     <!----- Navbar ------>
-    <div>
-        <nav class="navbar bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light">EMS</a>
-                <button class="d-flex btn btn-warning" onclick="logOut()">Log Out</button>
-            </div>
-        </nav>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">EMS</a>
+            <button class="btn btn-warning ms-auto" onclick="logOut()">Log Out</button>
+        </div>
+    </nav>
 
     <!----- Main ------>
-    <div class="container">
-        <h1 class="text-center my-4">Expense Management System</h1>
+    <div class="container content-wrapper">
+        <h1 class="text-center text-dark text-light my-4">Expense Management System</h1>
         <div class="row justify-content-center mb-4">
             <div class="col-md-3">
                 <input type="text" id="expense-title" class="form-control mb-2" placeholder="Title" />
@@ -32,43 +36,39 @@
             <div class="col-md-3">
                 <input type="date" id="expense-date" class="form-control mb-2" />
             </div>
-            <div class="col-md-3">
-                <div class="d-flex justify-content-between">
-                    <button onclick="addExpense()" class="btn btn-primary">Add Expense</button>
-                    <button onclick="deleteAll()" class="btn btn-danger">Delete All</button>
-                </div>
+            <div class="col-md-3 d-flex justify-content-between align-items-center">
+                <button onclick="addExpense()" class="btn btn-primary">Add Expense</button>
+                <button onclick="deleteAll()" class="btn btn-danger">Delete All</button>
             </div>
         </div>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                    <th id="total-amount"></th>
-                </tr>
-            </thead>
-            <tbody id="expense-list"></tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                        <h3 class="text-dark" id="total-amount" class="text-end"></h3>
+                    </tr>
+                </thead>
+                <tbody id="expense-list"></tbody>
+            </table>
+        </div>
     </div>
 
     <!----- Footer ------>
-    <div>
-        <footer>
-            <div class="d-flex justify-content-center bg-dark">
-                <p class="text-light">
-                    Developed by <a class="text-warning" style="text-decoration: none;" target="_blank" href="https://github.com/Asad-Nawaz92">Asad Nawaz</a>
-                    | All Rights Reserved. &copy; 2024
-                </p>
-            </div>
-        </footer>
-    </div>
+    <footer class="footer d-flex justify-content-center align-items-center">
+        <p class="text-light m-0">
+           &copy; 2024  Developed by <a class="text-info" style="text-decoration: none;" target="_blank"
+           href="https://github.com/Asad-Nawaz92">Asad Nawaz</a>&nbsp;All rights reserved.
+        </p>
+    </footer>
 
-
-    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
